@@ -1,8 +1,16 @@
 const Account = require("./account");
+const Transaction = require("./transaction");
+jest.mock("./transaction");
 
 describe("Account", () => {
   beforeEach(() => {
     account = new Account();
+  });
+
+  describe("getBalance", () => {
+    it("should return the balance of the account", () => {
+      expect(account.getBalance()).toEqual(0);
+    });
   });
 
   describe(".deposit", () => {
@@ -10,6 +18,15 @@ describe("Account", () => {
       account.deposit(500.0);
 
       expect(account.balance).toEqual(500.0);
+    });
+
+    xit("should create a new transaction", () => {
+      account.deposit(500.0);
+
+      expect(Transaction).toHaveBeenCalledWith({
+        deposit: 500.0,
+        balance: 500.0,
+      });
     });
 
     it("should throw an error if the amount to deposit is negative", () => {

@@ -3,6 +3,10 @@ class Account {
     this.balance = 0;
   }
 
+  getBalance() {
+    return this.balance;
+  }
+
   deposit(amount) {
     this.checkDepositValue(amount);
 
