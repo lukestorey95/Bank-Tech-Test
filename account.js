@@ -1,9 +1,12 @@
 class Account {
   #balance = 0;
+  #transactions = [];
   #transaction;
+  #printer;
 
-  constructor(transaction) {
+  constructor(transaction, printer) {
     this.#transaction = transaction;
+    this.#printer = printer;
   }
 
   getBalance() {
@@ -12,18 +15,18 @@ class Account {
 
   deposit(amount) {
     this.#checkDepositValue(amount);
-
     this.#balance += amount;
-
     this.#generateTransaction({ credit: amount });
   }
 
   withdraw(amount) {
     this.#checkSufficientFunds(amount);
-
     this.#balance -= amount;
-
     this.#generateTransaction({ debit: amount });
+  }
+
+  printStatement() {
+    this.#printer.printTransactions(this.#transactions);
   }
 
   #checkSufficientFunds(amount) {
@@ -40,7 +43,6 @@ class Account {
 
   #generateTransaction(creditOrDebit) {
     creditOrDebit.balance = this.#balance;
-
     new this.#transaction(creditOrDebit);
   }
 }

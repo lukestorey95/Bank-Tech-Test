@@ -1,14 +1,19 @@
 const Account = require("./account");
 const Transaction = require("./transaction");
+const Printer = require("./printer");
 jest.mock("./transaction");
+jest.mock("./printer");
 
 describe("Account", () => {
   beforeEach(() => {
-    emptyAccount = new Account(Transaction);
-    accountWithCash = new Account(Transaction);
+    printer = new Printer();
+
+    emptyAccount = new Account(Transaction, printer);
+    accountWithCash = new Account(Transaction, printer);
 
     accountWithCash.deposit(500);
 
+    Printer.mockClear();
     Transaction.mockClear();
   });
 
@@ -61,6 +66,16 @@ describe("Account", () => {
         debit: 250,
         balance: 250,
       });
+    });
+  });
+
+  describe("printStatement", () => {
+    it("should instruct printer to print a statement", () => {
+      const spy = jest.spyOn(printer, "printTransactions");
+
+      emptyAccount.printStatement();
+
+      expect(spy).toHaveBeenCalledWith([]);
     });
   });
 });
