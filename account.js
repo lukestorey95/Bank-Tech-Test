@@ -1,26 +1,36 @@
+const Transaction = require("./transaction");
+
 class Account {
+  #balance;
+  #transaction;
+
   constructor() {
-    this.balance = 0;
+    this.#balance = 0;
+    this.#transaction = Transaction;
   }
 
   getBalance() {
-    return this.balance;
+    return this.#balance;
   }
 
   deposit(amount) {
     this.#checkDepositValue(amount);
 
-    this.balance += amount;
+    this.#balance += amount;
+
+    new this.#transaction({ credit: amount, balance: this.#balance });
   }
 
   withdraw(amount) {
     this.#checkSufficientFunds(amount);
 
-    this.balance -= amount;
+    this.#balance -= amount;
+
+    new this.#transaction({ debit: amount, balance: this.#balance });
   }
 
   #checkSufficientFunds(amount) {
-    if (amount > this.balance) {
+    if (amount > this.#balance) {
       throw "Withdrawal failed: Insufficient funds";
     }
   }
