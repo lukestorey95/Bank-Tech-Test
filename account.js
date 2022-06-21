@@ -1,12 +1,9 @@
-const Transaction = require("./transaction");
-
 class Account {
-  #balance;
+  #balance = 0;
   #transaction;
 
-  constructor() {
-    this.#balance = 0;
-    this.#transaction = Transaction;
+  constructor(transaction) {
+    this.#transaction = transaction;
   }
 
   getBalance() {
@@ -18,7 +15,7 @@ class Account {
 
     this.#balance += amount;
 
-    new this.#transaction({ credit: amount, balance: this.#balance });
+    this.#generateTransaction({ credit: amount });
   }
 
   withdraw(amount) {
@@ -26,7 +23,7 @@ class Account {
 
     this.#balance -= amount;
 
-    new this.#transaction({ debit: amount, balance: this.#balance });
+    this.#generateTransaction({ debit: amount });
   }
 
   #checkSufficientFunds(amount) {
@@ -39,6 +36,12 @@ class Account {
     if (amount <= 0) {
       throw "Deposit failed: Amount must be positive";
     }
+  }
+
+  #generateTransaction(creditOrDebit) {
+    creditOrDebit.balance = this.#balance;
+
+    new this.#transaction(creditOrDebit);
   }
 }
 

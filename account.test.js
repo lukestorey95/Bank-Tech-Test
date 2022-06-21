@@ -4,8 +4,8 @@ jest.mock("./transaction");
 
 describe("Account", () => {
   beforeEach(() => {
-    emptyAccount = new Account();
-    accountWithCash = new Account();
+    emptyAccount = new Account(Transaction);
+    accountWithCash = new Account(Transaction);
 
     accountWithCash.deposit(500);
 
@@ -14,7 +14,7 @@ describe("Account", () => {
 
   describe("getBalance", () => {
     it("should return the balance of the account", () => {
-      expect(emptyAccount.getBalance()).toEqual(0);
+      expect(accountWithCash.getBalance()).toEqual(500);
     });
   });
 
