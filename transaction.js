@@ -23,25 +23,21 @@ class Transaction {
   }
 
   getBalance() {
-    return this.#formatCurrency(this.#debit);
+    return this.#formatCurrency(this.#balance);
   }
 
-  // print() {
-  //   return [
-  //     this.#date,
-  //     this.#formatCurrency(this.#credit),
-  //     this.#formatCurrency(this.#debit),
-  //     this.#formatCurrency(this.#balance),
-  //   ].join(" || ");
-  // }
-
   #formatCurrency(amount) {
-    if (amount) {
-      return amount.toFixed(2);
-    } else {
-      return amount;
-    }
+    return amount.toFixed(2);
   }
 }
 
 module.exports = Transaction;
+
+// print() {
+//   return [
+//     this.#date,
+//     this.#formatCurrency(this.#credit),
+//     this.#formatCurrency(this.#debit),
+//     this.#formatCurrency(this.#balance),
+//   ].join(" || ");
+// }

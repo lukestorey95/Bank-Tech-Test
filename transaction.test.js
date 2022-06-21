@@ -11,9 +11,9 @@ describe("Transaction", () => {
   });
 
   beforeEach(() => {
-    creditTransaction = new Transaction({ credit: 500, balance: 500 });
+    creditTransaction = new Transaction({ credit: 500, balance: 1000 });
 
-    debitTransaction = new Transaction({ debit: 500, balance: 500 });
+    debitTransaction = new Transaction({ debit: 500, balance: 1000 });
   });
 
   describe("getDate", () => {
@@ -36,7 +36,7 @@ describe("Transaction", () => {
 
   describe("getBalance()", () => {
     it("should return the balance amount formatted as a float to 2 decimals", () => {
-      expect(debitTransaction.getBalance()).toEqual("500.00");
+      expect(debitTransaction.getBalance()).toEqual("1000.00");
     });
   });
 
