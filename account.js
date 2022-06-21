@@ -26,7 +26,7 @@ class Account {
   }
 
   printStatement() {
-    this.#printer.printStatement(this.#transactions);
+    return this.#printer.printStatement(this.#transactions);
   }
 
   #checkSufficientFunds(amount) {
