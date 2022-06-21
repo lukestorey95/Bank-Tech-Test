@@ -15,7 +15,7 @@ class Transaction {
   }
 
   getCredit() {
-    return this.#credit;
+    return this.#formatCurrency(this.#credit);
   }
 
   // print() {
