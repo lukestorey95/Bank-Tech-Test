@@ -34,6 +34,12 @@ describe("Transaction", () => {
     });
   });
 
+  describe("getBalance()", () => {
+    it("should return the balance amount formatted as a float to 2 decimals", () => {
+      expect(debitTransaction.getBalance()).toEqual("500.00");
+    });
+  });
+
   // describe("print", () => {
   //   it("should return the date, credit amount and balance amount", () => {
   //     const transaction = new Transaction({ credit: 500, balance: 500 });

@@ -22,6 +22,10 @@ class Transaction {
     return this.#formatCurrency(this.#debit);
   }
 
+  getBalance() {
+    return this.#formatCurrency(this.#debit);
+  }
+
   // print() {
   //   return [
   //     this.#date,
