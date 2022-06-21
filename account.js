@@ -16,13 +16,13 @@ class Account {
   deposit(amount) {
     this.#checkDepositValue(amount);
     this.#balance += amount;
-    this.#generateTransaction({ credit: amount });
+    this.#transactions.unshift(this.#generateTransaction({ credit: amount }));
   }
 
   withdraw(amount) {
     this.#checkSufficientFunds(amount);
     this.#balance -= amount;
-    this.#generateTransaction({ debit: amount });
+    this.#transactions.unshift(this.#generateTransaction({ debit: amount }));
   }
 
   printStatement() {
@@ -43,7 +43,7 @@ class Account {
 
   #generateTransaction(creditOrDebit) {
     creditOrDebit.balance = this.#balance;
-    new this.#transaction(creditOrDebit);
+    return new this.#transaction(creditOrDebit);
   }
 }
 

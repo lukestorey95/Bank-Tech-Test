@@ -27,7 +27,11 @@ class Transaction {
   }
 
   #formatCurrency(amount) {
-    return amount.toFixed(2);
+    if (amount) {
+      return amount.toFixed(2);
+    } else {
+      return amount;
+    }
   }
 }
 

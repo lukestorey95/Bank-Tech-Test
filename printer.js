@@ -2,7 +2,11 @@ class Printer {
   #header = "date || credit || debit || balance";
 
   printStatement(transactions) {
-    return this.#header + "\n" + this.#formatTransactions(transactions);
+    const output = this.#header + "\n" + this.#formatTransactions(transactions);
+
+    console.log(output);
+
+    return output;
   }
 
   #formatTransactions(transactions) {
