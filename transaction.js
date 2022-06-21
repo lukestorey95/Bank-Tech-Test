@@ -1,24 +1,31 @@
 class Transaction {
-  #date;
+  #date = new Date(Date.now()).toLocaleDateString();
   #credit;
   #debit;
   #balance;
 
   constructor({ credit = null, debit = null, balance = null } = {}) {
-    this.#date = new Date(Date.now()).toLocaleDateString();
     this.#credit = credit;
     this.#debit = debit;
     this.#balance = balance;
   }
 
-  print() {
-    return [
-      this.#date,
-      this.#formatCurrency(this.#credit),
-      this.#formatCurrency(this.#debit),
-      this.#formatCurrency(this.#balance),
-    ].join(" || ");
+  getDate() {
+    return this.#date;
   }
+
+  getCredit() {
+    return this.#credit;
+  }
+
+  // print() {
+  //   return [
+  //     this.#date,
+  //     this.#formatCurrency(this.#credit),
+  //     this.#formatCurrency(this.#debit),
+  //     this.#formatCurrency(this.#balance),
+  //   ].join(" || ");
+  // }
 
   #formatCurrency(amount) {
     if (amount) {
