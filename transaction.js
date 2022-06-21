@@ -32,12 +32,3 @@ class Transaction {
 }
 
 module.exports = Transaction;
-
-// print() {
-//   return [
-//     this.#date,
-//     this.#formatCurrency(this.#credit),
-//     this.#formatCurrency(this.#debit),
-//     this.#formatCurrency(this.#balance),
-//   ].join(" || ");
-// }
