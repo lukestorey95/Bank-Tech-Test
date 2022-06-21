@@ -28,7 +28,11 @@ describe("Transaction", () => {
     });
   });
 
-  describe;
+  describe("getDebit()", () => {
+    it("should return the debt amount formatted as a float to 2 decimals", () => {
+      expect(debitTransaction.getDebit()).toEqual("500.00");
+    });
+  });
 
   // describe("print", () => {
   //   it("should return the date, credit amount and balance amount", () => {

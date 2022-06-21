@@ -18,6 +18,10 @@ class Transaction {
     return this.#formatCurrency(this.#credit);
   }
 
+  getDebit() {
+    return this.#formatCurrency(this.#debit);
+  }
+
   // print() {
   //   return [
   //     this.#date,
