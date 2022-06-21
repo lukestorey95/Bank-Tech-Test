@@ -22,11 +22,11 @@ describe("Transaction", () => {
     });
   });
 
-  // describe("getCredit", () => {
-  //   it("should return the credit amount formatted as a float to 2 decimals", () => {
-  //     expect(creditTransaction.getCredit()).toEqual(500.0);
-  //   });
-  // });
+  describe("getCredit", () => {
+    it("should return the credit amount formatted as a float to 2 decimals", () => {
+      expect(creditTransaction.getCredit()).toEqual(500.0);
+    });
+  });
 
   // describe("print", () => {
   //   it("should return the date, credit amount and balance amount", () => {
