@@ -27,21 +27,21 @@ describe("Printer", () => {
     Transaction.mockClear();
   });
 
-  describe("printTransactions", () => {
+  describe("printStatement", () => {
     it("should return only the header if no transactions have occured", () => {
-      expect(printer.printTransactions([])).toEqual(
+      expect(printer.printStatement([])).toEqual(
         "date || credit || debit || balance\n"
       );
     });
 
     it("should take an array of transaction objects and return them as a string", () => {
-      expect(printer.printTransactions([transaction])).toEqual(
+      expect(printer.printStatement([transaction])).toEqual(
         "date || credit || debit || balance\n20/06/2022 || 500.00 ||  || 1000.00"
       );
     });
 
     it("should handle multiple transaction objects", () => {
-      expect(printer.printTransactions([transaction, transaction])).toEqual(
+      expect(printer.printStatement([transaction, transaction])).toEqual(
         "date || credit || debit || balance\n20/06/2022 || 500.00 ||  || 1000.00\n20/06/2022 || 500.00 ||  || 1000.00"
       );
     });

@@ -1,7 +1,7 @@
 class Printer {
   #header = "date || credit || debit || balance";
 
-  printTransactions(transactions) {
+  printStatement(transactions) {
     return this.#header + "\n" + this.#formatTransactions(transactions);
   }
 

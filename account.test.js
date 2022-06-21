@@ -71,7 +71,7 @@ describe("Account", () => {
 
   describe("printStatement", () => {
     it("should instruct printer to print a statement", () => {
-      const spy = jest.spyOn(printer, "printTransactions");
+      const spy = jest.spyOn(printer, "printStatement");
 
       emptyAccount.printStatement();
 
