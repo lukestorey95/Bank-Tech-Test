@@ -6,10 +6,11 @@ describe("Printer", () => {
   beforeEach(() => {
     printer = new Printer();
 
-    transaction = new Transaction({ credit: 500, balance: 1000 });
+    transaction = new Transaction();
+    secondTransaction = new Transaction();
 
     transaction.getDate.mockImplementation(() => {
-      return "20/06/2022";
+      return "19/06/2022";
     });
 
     transaction.getCredit.mockImplementation(() => {
@@ -21,6 +22,22 @@ describe("Printer", () => {
     });
 
     transaction.getBalance.mockImplementation(() => {
+      return "500.00";
+    });
+
+    secondTransaction.getDate.mockImplementation(() => {
+      return "20/06/2022";
+    });
+
+    secondTransaction.getCredit.mockImplementation(() => {
+      return "500.00";
+    });
+
+    secondTransaction.getDebit.mockImplementation(() => {
+      return null;
+    });
+
+    secondTransaction.getBalance.mockImplementation(() => {
       return "1000.00";
     });
 
@@ -36,13 +53,13 @@ describe("Printer", () => {
 
     it("should take an array of transaction objects and return them as a string", () => {
       expect(printer.printStatement([transaction])).toEqual(
-        "date || credit || debit || balance\n20/06/2022 || 500.00 ||  || 1000.00"
+        "date || credit || debit || balance\n19/06/2022 || 500.00 ||  || 500.00"
       );
     });
 
-    it("should handle multiple transaction objects", () => {
-      expect(printer.printStatement([transaction, transaction])).toEqual(
-        "date || credit || debit || balance\n20/06/2022 || 500.00 ||  || 1000.00\n20/06/2022 || 500.00 ||  || 1000.00"
+    it("should handle multiple transactions", () => {
+      expect(printer.printStatement([secondTransaction, transaction])).toEqual(
+        "date || credit || debit || balance\n20/06/2022 || 500.00 ||  || 1000.00\n19/06/2022 || 500.00 ||  || 500.00"
       );
     });
   });
