@@ -1,4 +1,4 @@
-class Transaction {
+module.exports = class Transaction {
   #date = new Date(Date.now()).toLocaleDateString();
   #credit;
   #debit;
@@ -33,6 +33,4 @@ class Transaction {
       return amount;
     }
   }
-}
-
-module.exports = Transaction;
+};

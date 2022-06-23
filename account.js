@@ -1,4 +1,4 @@
-class Account {
+module.exports = class Account {
   #balance = 0;
   #transactions = [];
   #transaction;
@@ -45,6 +45,4 @@ class Account {
     creditOrDebit.balance = this.#balance;
     return new this.#transaction(creditOrDebit);
   }
-}
-
-module.exports = Account;
+};

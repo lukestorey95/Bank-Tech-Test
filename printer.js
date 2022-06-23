@@ -1,4 +1,4 @@
-class Printer {
+module.exports = class Printer {
   #header = "date || credit || debit || balance";
 
   printStatement(transactions) {
@@ -17,6 +17,4 @@ class Printer {
       transaction.getBalance(),
     ].join(" || ");
   }
-}
-
-module.exports = Printer;
+};
