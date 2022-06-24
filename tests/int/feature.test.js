@@ -1,6 +1,7 @@
-const Account = require("./account");
-const Transaction = require("./transaction");
-const Printer = require("./printer");
+const Account = require("../../src/account");
+const Transaction = require("../../src/transaction");
+const Printer = require("../../src/printer");
+const History = require("../../src/history");
 
 beforeAll(() => {
   jest.useFakeTimers();
@@ -8,7 +9,7 @@ beforeAll(() => {
 });
 
 it("should allow deposits, withdrawals and be able to print statement showing those transactions", () => {
-  const account = new Account(Transaction, new Printer());
+  const account = new Account(new Printer(), new History(Transaction));
 
   account.deposit(100);
   account.withdraw(50);

@@ -1,41 +1,28 @@
 module.exports = class Account {
-  #transactions = [];
-  #transaction;
   #printer;
+  #history;
 
-  constructor(transaction, printer) {
-    this.#transaction = transaction;
+  constructor(printer, history) {
     this.#printer = printer;
+    this.#history = history;
   }
 
   getBalance() {
-    if (this.#transactions[this.#transactions.length - 1]) {
-      return this.#transactions[this.#transactions.length - 1].getBalance();
-    } else return 0;
+    return this.#history.getBalance();
   }
 
   deposit(amount) {
     this.#checkDepositValue(amount);
-    this.#transactions.push(
-      new this.#transaction({
-        credit: amount,
-        balance: this.getBalance() + amount,
-      })
-    );
+    this.#history.newTransaction(amount);
   }
 
   withdraw(amount) {
     this.#checkSufficientFunds(amount);
-    this.#transactions.push(
-      new this.#transaction({
-        debit: amount,
-        balance: this.getBalance() - amount,
-      })
-    );
+    this.#history.newTransaction(-amount);
   }
 
   printStatement() {
-    return this.#printer.printStatement(this.#transactions);
+    return this.#printer.printStatement(this.#history.getTransactions());
   }
 
   #checkSufficientFunds(amount) {

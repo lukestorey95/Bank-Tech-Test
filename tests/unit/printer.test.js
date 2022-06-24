@@ -1,6 +1,6 @@
-const Printer = require("./printer");
-const Transaction = require("./transaction");
-jest.mock("./transaction");
+const Printer = require("../../src/printer");
+const Transaction = require("../../src/transaction");
+jest.mock("../../src/transaction");
 
 describe("Printer", () => {
   beforeEach(() => {

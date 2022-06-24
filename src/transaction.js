@@ -4,7 +4,7 @@ module.exports = class Transaction {
   #debit;
   #balance;
 
-  constructor({ credit = null, debit = null, balance = null } = {}) {
+  constructor({ credit = null, debit = null, balance }) {
     [this.#credit, this.#debit, this.#balance] = [credit, debit, balance];
   }
 
