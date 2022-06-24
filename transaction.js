@@ -5,9 +5,7 @@ module.exports = class Transaction {
   #balance;
 
   constructor({ credit = null, debit = null, balance = null } = {}) {
-    this.#credit = credit;
-    this.#debit = debit;
-    this.#balance = balance;
+    [this.#credit, this.#debit, this.#balance] = [credit, debit, balance];
   }
 
   getDate() {
@@ -27,10 +25,7 @@ module.exports = class Transaction {
   }
 
   #formatCurrency(amount) {
-    if (amount) {
-      return amount.toFixed(2);
-    } else {
-      return amount;
-    }
+    if (amount) return amount.toFixed(2);
+    else return amount;
   }
 };
