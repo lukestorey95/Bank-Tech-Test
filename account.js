@@ -16,13 +16,13 @@ module.exports = class Account {
   deposit(amount) {
     this.#checkDepositValue(amount);
     this.#balance += amount;
-    this.#transactions.unshift(this.#generateTransaction({ credit: amount }));
+    this.#transactions.push(this.#generateTransaction({ credit: amount }));
   }
 
   withdraw(amount) {
     this.#checkSufficientFunds(amount);
     this.#balance -= amount;
-    this.#transactions.unshift(this.#generateTransaction({ debit: amount }));
+    this.#transactions.push(this.#generateTransaction({ debit: amount }));
   }
 
   printStatement() {

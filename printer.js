@@ -6,7 +6,7 @@ module.exports = class Printer {
   }
 
   #formatTransactions(transactions) {
-    return transactions.map(this.#formatTransaction).join("\n");
+    return transactions.reverse().map(this.#formatTransaction).join("\n");
   }
 
   #formatTransaction(transaction) {
