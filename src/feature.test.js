@@ -7,10 +7,6 @@ beforeAll(() => {
   jest.setSystemTime(new Date("2022-06-20"));
 });
 
-afterAll(() => {
-  jest.useRealTimers();
-});
-
 it("should allow deposits, withdrawals and be able to print statement showing those transactions", () => {
   const account = new Account(Transaction, new Printer());
 

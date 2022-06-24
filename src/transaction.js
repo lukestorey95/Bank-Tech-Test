@@ -13,19 +13,14 @@ module.exports = class Transaction {
   }
 
   getCredit() {
-    return this.#formatCurrency(this.#credit);
+    return this.#credit;
   }
 
   getDebit() {
-    return this.#formatCurrency(this.#debit);
+    return this.#debit;
   }
 
   getBalance() {
-    return this.#formatCurrency(this.#balance);
-  }
-
-  #formatCurrency(amount) {
-    if (amount) return amount.toFixed(2);
-    else return amount;
+    return this.#balance;
   }
 };
