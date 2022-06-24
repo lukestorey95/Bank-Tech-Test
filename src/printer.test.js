@@ -58,7 +58,7 @@ describe("Printer", () => {
     });
 
     it("should handle multiple transactions", () => {
-      expect(printer.printStatement([secondTransaction, transaction])).toEqual(
+      expect(printer.printStatement([transaction, secondTransaction])).toEqual(
         "date || credit || debit || balance\n20/06/2022 || 500.00 ||  || 1000.00\n19/06/2022 || 500.00 ||  || 500.00"
       );
     });

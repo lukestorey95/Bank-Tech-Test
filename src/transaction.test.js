@@ -24,19 +24,19 @@ describe("Transaction", () => {
 
   describe("getCredit", () => {
     it("should return the credit amount formatted as a float to 2 decimals", () => {
-      expect(creditTransaction.getCredit()).toEqual("500.00");
+      expect(creditTransaction.getCredit()).toEqual(500);
     });
   });
 
   describe("getDebit()", () => {
     it("should return the debt amount formatted as a float to 2 decimals", () => {
-      expect(debitTransaction.getDebit()).toEqual("500.00");
+      expect(debitTransaction.getDebit()).toEqual(500);
     });
   });
 
   describe("getBalance()", () => {
     it("should return the balance amount formatted as a float to 2 decimals", () => {
-      expect(debitTransaction.getBalance()).toEqual("1000.00");
+      expect(debitTransaction.getBalance()).toEqual(1000);
     });
   });
 });
