@@ -30,15 +30,11 @@ module.exports = class Account {
   }
 
   #checkSufficientFunds(amount) {
-    if (amount > this.#balance) {
-      throw "Withdrawal failed: Insufficient funds";
-    }
+    if (amount > this.#balance) throw "Withdrawal failed: Insufficient funds";
   }
 
   #checkDepositValue(amount) {
-    if (amount <= 0) {
-      throw "Deposit failed: Amount must be positive";
-    }
+    if (amount <= 0) throw "Deposit failed: Amount must be positive";
   }
 
   #generateTransaction(creditOrDebit) {
